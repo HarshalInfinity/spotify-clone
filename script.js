@@ -20,7 +20,7 @@ function secondsToMinutesSeconds(seconds) {
 async function getSongs(folder) {
 
     currFolder = folder
-    let a = await fetch(`/${folder}`)
+    let a = await fetch(`https://github.com/HarshalInfinity/spotify-clone/tree/main/songs/${folder}`)
     let response = await a.text();
     let div = document.createElement('div')
     div.innerHTML = response;
@@ -84,7 +84,7 @@ async function displayAlbums() {
         if (e.href.includes("/songs/")) {
             let folder = (e.href.split("/").slice(-1)[0])
             //Get the metadata of the folder
-            let a = await fetch(`/songs/${folder}/info.json`)
+            let a = await fetch(`https://github.com/HarshalInfinity/spotify-clone/tree/main/songs/${folder}/info.json`)
             let response = await a.json();
             cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder = "${folder}" class="card">
             <div class="play">
@@ -99,7 +99,7 @@ async function displayAlbums() {
                     </svg>
                 </svg>
             </div>
-            <img src="/songs/${folder}/cover.jpg" alt="poster">
+            <img src="https://github.com/HarshalInfinity/spotify-clone/tree/main/songs${folder}/cover.jpg" alt="poster">
             <h2>${response.title}</h2>
             <p>${response.description}</p>
         </div>`
@@ -124,7 +124,7 @@ async function main() {
     document.querySelector(".range").getElementsByTagName("input")[0].value = 100
 
     //get the list of all the songs
-    await getSongs(`songs/ncs/`)
+    await getSongs(`https://github.com/HarshalInfinity/spotify-clone/tree/main/songs/ncs/`)
     playMusic(songs[0], true)
 
 
@@ -132,11 +132,11 @@ async function main() {
     play.addEventListener("click", () => {
         if (currentSong.paused) {
             currentSong.play()
-            play.src = "img/pause.svg"
+            play.src = "https://github.com/HarshalInfinity/spotify-clone/tree/main/img/pause.svg"
         }
         else {
             currentSong.pause()
-            play.src = "img/play.svg"
+            play.src = "https://github.com/HarshalInfinity/spotify-clone/tree/main/img/play.svg"
         }
     })
 
@@ -149,7 +149,7 @@ async function main() {
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
         if ((index - 1) >= 0) {
             playMusic(songs[index - 1])
-            play.src = "img/pause.svg"
+            play.src = "https://github.com/HarshalInfinity/spotify-clone/tree/main/img/pause.svg"
         }
     })
 
@@ -159,7 +159,7 @@ async function main() {
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
         if ((index + 1) < songs.length) {
             playMusic(songs[index + 1])
-            play.src = "img/pause.svg"
+            play.src = "https://github.com/HarshalInfinity/spotify-clone/tree/main/img/pause.svg"
         }
     })
 
