@@ -124,7 +124,7 @@ async function main() {
     document.querySelector(".range").getElementsByTagName("input")[0].value = 100
 
     //get the list of all the songs
-    await getSongs(`songs/EDM%20Hits/`)
+    await getSongs(`songs/ncs/`)
     playMusic(songs[0], true)
 
 
